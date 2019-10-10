@@ -41,4 +41,10 @@ typedef struct Slist
 void SlistInit(struct Slist * plist);
 void Push_back(struct Slist * plist,DataType x);
 void Show_List(struct Slist * plist);
+void Push_front(struct Slist * plist,DataType x);
+void Pop_back(struct Slist * plist);
+void Pop_front(struct Slist * plist);
+void Insert_val(struct Slist * plist,DataType x);
+SlistNode * Find_val(struct Slist * plist,DataType x);
+void Delete_val(struct Slist * plist,DataType x);
 #endif/*_SLIST_H_*/
