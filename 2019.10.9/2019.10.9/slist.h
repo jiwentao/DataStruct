@@ -47,4 +47,10 @@ void Pop_front(struct Slist * plist);
 void Insert_val(struct Slist * plist,DataType x);
 SlistNode * Find_val(struct Slist * plist,DataType x);
 void Delete_val(struct Slist * plist,DataType x);
+void Reverse(struct Slist * plist);
+void Sort(struct Slist * plist);
+DataType Slist_Lenth(struct Slist * plist);
+void Modify_val(struct Slist * plist,DataType x);
+void Clear_Slist(struct Slist * plist);
+void Destroy_Slist(struct Slist * plist);
 #endif/*_SLIST_H_*/

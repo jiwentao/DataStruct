@@ -31,7 +31,9 @@ void Push_back(struct Slist * plist,DataType x)
 
 void Show_List(struct Slist * plist)
 {
-	SlistNode * p = plist->fist->next;
+	SlistNode * p;
+	assert(plist->fist != NULL);
+    p = plist->fist->next;
 	while(p != NULL)
 	{
 		printf("%d-->",p->data);
@@ -117,12 +119,12 @@ SlistNode * Find_val(struct Slist * plist,DataType x)
 	}
 	return p;
 }
-#if 0
-void Delete_val(struct Slist * plist,DataType x)
+#if 1
+void Delete_val(struct Slist * plist,DataType x)//方法一
 {
 	SlistNode * q;
 	SlistNode * p = Find_val(plist,x);
-	if(p = NULL)
+	if(NULL == p)
 		printf("要删除的值不存在!\n");
 	q = plist->fist;
 	while(q->next != p)
@@ -136,3 +138,121 @@ void Delete_val(struct Slist * plist,DataType x)
 	plist->size--;
 }
 #endif
+#if 0
+void Delete_val(struct Slist * plist,DataType x)//方法二
+{
+	SlistNode * q = NULL;
+	SlistNode * p = plist->fist;
+	while(p->next != NULL && p->next->data != x)
+	{
+		p = p->next;
+	}
+	if(p->next == NULL)
+	    return;
+	q = p->next;
+	if(q == plist->last)
+	{
+		plist->last = p;
+	}
+	p->next = q->next;
+	free(q);
+	plist->size--;
+}
+#endif
+void Reverse(struct Slist * plist)
+{
+	SlistNode * p1,*p2,*p3;
+	if(plist->size <= 1)
+		return;
+	p1 = NULL;
+	p2 = plist->fist->next;
+    p3 = p2->next;
+
+	plist->last = p2;
+	//三个指针同时后移
+	while(p2 != NULL)
+	{
+		p2->next = p1;
+		p1 = p2;
+		p2 = p3;
+		if(p3 != NULL)
+			p3 = p3->next;
+	}
+	plist->fist->next = p1;
+}
+
+void Sort(struct Slist * plist)
+{
+	SlistNode * p1,* p2,* p3;
+	if(plist->size <= 1)
+		return;
+	p2 = plist->fist->next;
+	p3 = p2->next;
+	plist->last = p2;
+	plist->last->next = NULL;
+	p2 = p3;
+	while(p2 != NULL)
+	{
+		p3 = p3->next;
+		p1 = plist->fist;
+		while(p1->next != NULL && p1->next->data < p2->data)
+		{
+			p1 = p1->next;
+		}
+		if(p1->next == NULL)
+		{
+			p1->next = p2;
+			plist->last = p2;
+			p2->next = NULL;
+		}
+		else
+		{
+			p2->next = p1->next;
+			p1->next = p2;
+		}
+		p2 = p3;
+	}
+}
+
+DataType Slist_Lenth(struct Slist * plist)
+{
+	return plist->size;
+}
+
+void Modify_val(struct Slist * plist,DataType x)
+{
+	SlistNode * p = plist->fist;
+	DataType val;
+	printf("请输入修改后的值:>");
+	scanf("%d",&val);
+	while(p != NULL && p->data != x)
+	{
+		p = p->next;
+	}
+	if(p == NULL)
+	{
+		printf("你要修改的值不存在!\n");
+		return;
+	}
+	p->data = val;
+}
+
+void Clear_Slist(struct Slist * plist)
+{
+	SlistNode * p = plist->fist->next;
+	while(p != NULL)
+	{
+		plist->fist->next = p->next;
+		free(p);
+		p = plist->fist->next;
+	}
+	plist->last = plist->fist;
+	plist->size = 0;
+}
+
+void Destroy_Slist(struct Slist * plist)
+{
+	Clear_Slist(plist);
+	free(plist->fist);
+	plist->fist = plist->last = NULL;
+}

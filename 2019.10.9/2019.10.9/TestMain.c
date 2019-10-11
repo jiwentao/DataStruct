@@ -73,23 +73,33 @@ int main()
 			}
 			break;
 		case REVERSE:
+			Reverse(&mylist);
 			break;
 		case SORT:
+			Sort(&mylist);
 			break;
 		case LENTH:
+			item = Slist_Lenth(&mylist);
+			printf("该链表的长度为:%d\n",item);
 			break;
 		case MODIFY_VAL:
+			printf("请输入修改前的值:>");
+			scanf("%d",&item);
+			Modify_val(&mylist,item);
 			break;
 		case SHOW_SLIST:
 			Show_List(&mylist);
 			break;
 		case CLEAR:
+			Clear_Slist(&mylist);
 			break;
 		case DESTROY:
+			Destroy_Slist(&mylist);
 			break;
 		default:
 			printf("选择错误,请重新选择!\n");
 			break;
 		}
 	}while(input);
+
 }
