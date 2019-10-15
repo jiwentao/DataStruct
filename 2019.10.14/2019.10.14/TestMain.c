@@ -80,12 +80,16 @@ int main()
 			printf("该链表的大小为:>%d\n",item);
 			break;
 		case SORT:
+			Sort_list(&mylist);
 			break;
 		case REVERSE:
+			Reverse_list(&mylist);
 			break;
 		case CLEAR:
+			Clear_list(&mylist);
 			break;
 		case DESTROY:
+			Destroy_list(&mylist);
 			break;
 		default:
 			printf("选择错误，请重新选择!\n");

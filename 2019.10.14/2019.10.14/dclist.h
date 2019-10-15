@@ -50,5 +50,8 @@ DataType Lenth_list(struct DCList * plist);
 void Insert_val(struct DCList * plist,DataType x);
 void Delete_val(struct DCList * plist,DataType x);
 void Modify_val(struct DCList * plist,DataType x);
-
+void Sort_list(struct DCList * plist);
+void Reverse_list(struct DCList * plist);
+void Clear_list(struct DCList * plist);
+void Destroy_list(struct DCList * plist);
 #endif/*_DCLIST_H_*/
