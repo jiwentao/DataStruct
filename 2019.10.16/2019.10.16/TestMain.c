@@ -67,8 +67,12 @@ int main()
 			Insert_val(&mylist,item);
 			break;
 		case DELETE_POS:
+			Delete_pos(&mylist);
 			break;
 		case DELETE_VAL:
+			printf("请输入你要删除的值:>");
+			scanf("%d",&item);
+			Delete_val(&mylist,item);
 			break;
 		case FIND_POS:
 			printf("请输入你要查找的位置:>");
@@ -93,20 +97,32 @@ int main()
 				printf("%d在顺序表中的位置为%d\n",item,pos);
 			break;
 		case MODIFY_POS:
+			printf("请输入修改前的位置:>");
+			scanf("%d",&item);
+			Modify_pos(&mylist,item);
 			break;
 		case MODIFY_VAL:
+			printf("请输入修改前的值:>");
+			scanf("%d",&item);
+			Modify_val(&mylist,item);
 			break;
 		case SORT:
+			Sort_list(&mylist);
 			break;
 		case REVERSE:
+			Reverse_list(&mylist);
 			break;
 		case LENTH:
+			Lenth(&mylist);
 			break;
 		case CLEAR:
+			Clear_list(&mylist);
 			break;
 		default:
 			printf("选择错误,请重新选择!\n");
 			break;
 		}
+		system("pause");
+		system("cls");
 	}while(input);
 }

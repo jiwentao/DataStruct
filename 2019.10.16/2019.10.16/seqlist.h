@@ -57,4 +57,12 @@ void Insert_pos(struct SeqList * psl,int pos);
 void Insert_val(struct SeqList * psl,DataType x);
 int Find_pos(struct SeqList * psl,int pos);
 int Find_val(struct SeqList * psl,DataType x);
+void Delete_pos(struct SeqList * psl);
+void Delete_val(struct SeqList * psl,DataType x);
+void Modify_pos(struct SeqList * psl,DataType x);
+void Modify_val(struct SeqList * psl,DataType x);
+void Sort_list(struct SeqList * psl);
+void Reverse_list(struct SeqList * psl);
+void Lenth(struct SeqList * psl);
+void Clear_list(struct SeqList * psl);
 #endif/*_SEQLIST_H_*/

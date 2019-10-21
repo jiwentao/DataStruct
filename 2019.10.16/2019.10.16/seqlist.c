@@ -148,3 +148,126 @@ int Find_val(struct SeqList * psl,DataType x)
 	}
 	return -1;
 }
+
+void Delete_pos(struct SeqList * psl)
+{
+	int pos = 0,ret = 0,i;
+	assert(psl != NULL);
+	printf("请输入你要删除的位置:>");
+	scanf("%d",&pos);
+	ret = Find_pos(psl,pos);
+	if(ret == -1)
+	{
+		printf("你输入的位置非法!\n");
+		return;
+	}
+	else
+	{
+		for(i = ret;i < psl->size;i++)
+		{
+			psl->arr[i] = psl->arr[i+1];
+		}
+	}
+	psl->size--;
+}
+
+void Delete_val(struct SeqList * psl,DataType x)
+{
+	int ret = 0,i = 0;
+	assert(psl);
+	ret = Find_val(psl,x);
+	if(ret == -1)
+	{
+		printf("你要删除的值不存在!\n");
+		return;
+	}
+	else
+	{
+		for(i = ret;i <= psl->size;i++)
+		{
+			psl->arr[i] = psl->arr[i+1];
+		}
+	}
+	psl->size--;
+}
+
+void Modify_pos(struct SeqList * psl,DataType x)
+{
+	int ret = 0,val = 0;
+	assert(psl);
+	printf("请输入你要修改的值:>");
+	scanf("%d",&val);
+	ret = Find_pos(psl,x);
+	if(ret == -1)
+	{
+		printf("你要修改的值不存在!\n");
+		return;
+	}
+	else
+	{
+		psl->arr[ret] = val;
+	}
+}
+
+void Modify_val(struct SeqList * psl,DataType x)
+{
+	int ret = 0,val;
+	assert(psl != NULL);
+	printf("请输入修改后的值:>");
+	scanf("%d",&val);
+	ret = Find_val(psl,x);
+	if(ret == -1)
+	{
+		printf("你要修改的值不存在!\n");
+		return;
+	}
+	else
+	{
+		psl->arr[ret] = val;
+	}
+}
+
+void Sort_list(struct SeqList * psl)
+{
+	int i = 0,j = 0,tem = 0;
+	assert(psl);
+	for(i = 0;i < psl->size-1; i++)
+	{
+		for(j = 0;j < psl->size-1-i;j++)
+		{
+			if(psl->arr[j] > psl->arr[j+1])
+			{
+				tem = psl->arr[j];
+				psl->arr[j] = psl->arr[j+1];
+				psl->arr[j+1] = tem;
+			}
+		}
+	}
+}
+
+void Reverse_list(struct SeqList * psl)
+{
+	int began = 0,tail = psl->size-1;
+	int tem = 0;
+	assert(psl);
+	while(began < tail)
+	{
+		tem = psl->arr[began];
+		psl->arr[began] = psl->arr[tail];
+		psl->arr[tail] = tem;
+		began++;
+		tail--;
+	}
+}
+
+void Lenth(struct SeqList * psl)
+{
+	assert(psl);
+	printf("该顺序表的长度为:>%d\n",psl->size);
+}
+
+void Clear_list(struct SeqList * psl)
+{
+	assert(psl);
+	psl->size = 0;
+}
