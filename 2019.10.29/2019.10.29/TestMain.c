@@ -24,11 +24,13 @@ void menu()
 }
 int main()
 {
-	int input = 0;
-	int count = 0;
+	int input = 0,i = 0;
+	int count = 0,flag = 0;
+	char * str = "ABC##DE##F##G#H##";
 	BinTreeNode * p = NULL;
-	BinTree bt;
+	BinTree bt,bt1;
 	BinTree_Init(&bt);
+	BinTree_Init(&bt1);
 	do
 	{
 		menu();
@@ -58,6 +60,9 @@ int main()
 			printf("\n");
 			break;
 		case 5:
+			/*printf("Level:>");
+			BinTree_LevelOrder(&bt);
+			printf("\n");*/
 			break;
 		case 6:
 			count = BinTree_Node_Sum(&bt);
@@ -72,24 +77,43 @@ int main()
 			/*printf("请输入你要查找的结点值:>");
 			scanf("&c",&input);
 			fflush(stdin);*/
-			p = BinTree_Find(&bt,'D');
-			printf("%p\n",p);
-			/*if(p == NULL)
+			p = BinTree_Find(&bt,'V');
+			/*printf("%p\n",p);*/
+			if(p == NULL)
 			{
 				printf("查找的值不存在!\n");
 			}
 			else
 			{
 				printf("该值的位置为:%p\n",p);
-			}*/
+			}
 			break;
 		case 9:
+			p = BinTree_Parent(&bt,'A');
+			if(p == NULL)
+			{
+				printf("该值的父节点不存在!\n");
+			}
+			else
+			{
+				printf("该值的父节点的位置为:>%p\n",p);
+			}
 			break;
 		case 10:
+			BinTree_Clone(&bt,&bt1);
+			BinTree_PreOrder(&bt1);
+			printf("\n");
 			break;
 		case 11:
+			BinTree_Creat_By_Input(&bt1);
+			flag = BinTree_IsEqual(&bt,&bt1);
+			if(flag == 1)
+				printf("二叉树bt和bt1相等\n");
+			else
+				printf("二叉树bt和bt1不相等\n");
 			break;
 		case 12:
+			BinTree_Create_By_Str(&bt,str,&i);
 			break;
 		default:
 			printf("选择错误,请重新选择!\n");

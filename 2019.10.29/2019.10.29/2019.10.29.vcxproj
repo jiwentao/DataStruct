@@ -62,10 +62,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="bintree.c" />
+    <ClCompile Include="queue.c" />
     <ClCompile Include="TestMain.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bintree.h" />
+    <ClInclude Include="queue.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

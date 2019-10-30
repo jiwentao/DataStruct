@@ -131,3 +131,76 @@ BinTreeNode * _BinTree_Find(struct BinTreeNode * pbt,DataType key)
 		return p;
 	return _BinTree_Find(pbt->rightchild,key);
 }
+
+BinTreeNode * BinTree_Parent(struct BinTree * pbt,DataType key)
+{
+	return _BinTree_Parent(pbt->root,key);
+}
+BinTreeNode * _BinTree_Parent(struct BinTreeNode * pbt,DataType key)
+{
+	BinTreeNode * pr = NULL;
+	BinTreeNode * p = _BinTree_Find(pbt,key);
+	if(pbt == NULL || p == NULL || pbt == p)
+		return NULL;
+	if(pbt->leftchild == p || pbt->rightchild == p)
+		return pbt;
+	pr = _BinTree_Parent(pbt->leftchild,key);
+	if(pr != NULL)
+		return pr;
+	return _BinTree_Parent(pbt->rightchild,key);
+}
+
+void BinTree_Clone(struct BinTree * pbt,struct BinTree * pbt1)
+{
+	pbt1->root = _BinTree_Clone(pbt->root);
+}
+BinTreeNode * _BinTree_Clone(struct BinTreeNode * pbt)
+{
+	BinTreeNode * p = NULL;
+	if(pbt == NULL)
+		return NULL;
+	else
+	{
+		p = (BinTreeNode*)malloc(sizeof(BinTreeNode));
+		p->data = pbt->data;
+		p->leftchild = _BinTree_Clone(pbt->leftchild);
+		p->rightchild = _BinTree_Clone(pbt->rightchild);
+		return p;
+	}
+}
+
+int BinTree_IsEqual(struct BinTree * pbt,struct BinTree * pbt1)
+{
+	return _BinTree_IsEqual(pbt->root,pbt1->root);
+}
+int _BinTree_IsEqual(struct BinTreeNode * pbt,struct BinTreeNode * pbt1)
+{
+	if(pbt == NULL && pbt1 == NULL)
+		return 1;
+	if(pbt == NULL || pbt1 == NULL)
+		return 0;
+	return (pbt->data == pbt1->data)
+		&& _BinTree_IsEqual(pbt->leftchild,pbt1->leftchild)
+		&& _BinTree_IsEqual(pbt->rightchild,pbt1->rightchild);
+}
+
+void BinTree_Create_By_Str(struct BinTree * pbt,DataType * str,int * i)
+{
+	pbt->root = _BinTree_Create_By_Str(str,i);
+}
+BinTreeNode * _BinTree_Create_By_Str(DataType * str,int * i)
+{
+	BinTreeNode * p = NULL;
+	if(str[*i] == '#' || str[*i] == '\0')
+		return NULL;
+	else
+	{
+		p = (BinTreeNode*)malloc(sizeof(BinTreeNode));
+		p->data = str[*i];
+		(*i)++;
+		p->leftchild = _BinTree_Create_By_Str(str,i);
+		(*i)++;
+		p->rightchild = _BinTree_Create_By_Str(str,i);
+	}
+    return p;
+}

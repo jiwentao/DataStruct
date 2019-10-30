@@ -36,5 +36,13 @@ size_t BinTree_Height(struct BinTree * pbt);
 size_t _BinTree_Height(struct BinTreeNode * pbt);
 BinTreeNode * BinTree_Find(struct BinTree * pbt,DataType key);
 BinTreeNode * _BinTree_Find(struct BinTreeNode * pbt,DataType key);
+BinTreeNode * BinTree_Parent(struct BinTree * pbt,DataType key);
+BinTreeNode * _BinTree_Parent(struct BinTreeNode * pbt,DataType key);
+void BinTree_Clone(struct BinTree * pbt,struct BinTree * pbt1);
+BinTreeNode * _BinTree_Clone(struct BinTreeNode * pbt);
+int BinTree_IsEqual(struct BinTree * pbt,struct BinTree * pbt1);
+int _BinTree_IsEqual(struct BinTreeNode * pbt,struct BinTreeNode * pbt1);
+void BinTree_Create_By_Str(struct BinTree * pbt,DataType * str,int * i);
+BinTreeNode * _BinTree_Create_By_Str(DataType * str,int * i);
 
 #endif/*_BINTREE_H_*/
