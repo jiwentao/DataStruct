@@ -60,9 +60,9 @@ int main()
 			printf("\n");
 			break;
 		case 5:
-			/*printf("Level:>");
+			printf("Level:>");
 			BinTree_LevelOrder(&bt);
-			printf("\n");*/
+			printf("\n");
 			break;
 		case 6:
 			count = BinTree_Node_Sum(&bt);

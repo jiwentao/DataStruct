@@ -1,12 +1,13 @@
-﻿生成启动时间为 2019-10-30 11:06:15。
+﻿生成启动时间为 2019-10-31 21:17:05。
      1>项目“D:\编程之路\DataStruct\2019.10.29\2019.10.29\2019.10.29.vcxproj”在节点 2 上(build 个目标)。
      1>InitializeBuildStatus:
          正在创建“Debug\2019.10.29.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
        ClCompile:
-         D:\wode\VS6.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TC /analyze- /errorReport:prompt TestMain.c
-         TestMain.c
+         D:\wode\VS6.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TC /analyze- /errorReport:prompt bintree.c
+         bintree.c
        Link:
          D:\wode\VS6.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\编程之路\DataStruct\2019.10.29\Debug\2019.10.29.exe" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\2019.10.29.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"D:\编程之路\DataStruct\2019.10.29\Debug\2019.10.29.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\编程之路\DataStruct\2019.10.29\Debug\2019.10.29.lib" /MACHINE:X86 Debug\bintree.obj
+         Debug\queue.obj
          Debug\TestMain.obj
          LINK : 没有找到 D:\编程之路\DataStruct\2019.10.29\Debug\2019.10.29.exe 或上一个增量链接没有生成它；正在执行完全链接
          2019.10.29.vcxproj -> D:\编程之路\DataStruct\2019.10.29\Debug\2019.10.29.exe
@@ -19,4 +20,4 @@
 
 生成成功。
 
-已用时间 00:00:01.51
+已用时间 00:00:01.32

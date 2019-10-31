@@ -71,6 +71,33 @@ void _BinTree_PostOrder(struct BinTreeNode * pbt)
 	}
 }
 
+#include"queue.h"
+/* 先将二叉树根节点入队，然后出队，访问该节点，如果有左子树，则将左子树根节点入队；
+如果有右子树，则将右子树根节点入队。然后出队，对出队节点访问，如此循环 */
+void BinTree_LevelOrder(struct BinTree * pbt)
+{
+	_BinTree_LevelOrder(pbt->root);
+}
+void _BinTree_LevelOrder(struct BinTreeNode * pbt)
+{
+	if(pbt != NULL)
+	{
+		ListQueue lq;
+		ListQueue_Init(&lq);
+		ListQueue_En(&lq,pbt);
+		while(!((&lq)->start == NULL))
+		{
+			BinTreeNode * p = ListQueue_Front_Val(&lq);
+			ListQueue_Del(&lq);
+			printf("%c ",p->data);
+			if(pbt->leftchild != NULL)
+				ListQueue_En(&lq,pbt->leftchild);
+			if(pbt->rightchild != NULL)
+				ListQueue_En(&lq,pbt->rightchild);
+		}
+	}
+}
+
 //求节点个数方法一
 size_t BinTree_Node_Sum(struct BinTree * pbt)
 {

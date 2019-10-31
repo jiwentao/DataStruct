@@ -44,5 +44,7 @@ int BinTree_IsEqual(struct BinTree * pbt,struct BinTree * pbt1);
 int _BinTree_IsEqual(struct BinTreeNode * pbt,struct BinTreeNode * pbt1);
 void BinTree_Create_By_Str(struct BinTree * pbt,DataType * str,int * i);
 BinTreeNode * _BinTree_Create_By_Str(DataType * str,int * i);
+void BinTree_LevelOrder(struct BinTree * pbt);
+void _BinTree_LevelOrder(struct BinTreeNode * pbt);
 
 #endif/*_BINTREE_H_*/
