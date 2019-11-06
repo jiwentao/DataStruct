@@ -19,7 +19,9 @@ void menu()
 	printf("****6.tree_node_sum  7.tree_height    ****\n");
 	printf("****8.tree_find      9.tree_parent    ****\n");
 	printf("****10.tree_clone    11.tree_isequal  ****\n");
-	printf("****12.tree_createbystr               ****\n");
+	printf("****     12.tree_createbystr          ****\n");
+	printf("****     13.tree_createby_vlr_lvr     ****\n");
+	printf("****     14.tree_createby_lvr_lrv     ****\n");
 	printf("******************************************\n");
 }
 int main()
@@ -27,6 +29,10 @@ int main()
 	int input = 0,i = 0;
 	int count = 0,flag = 0;
 	char * str = "ABC##DE##F##G#H##";
+	char * vlr = "ABCDEFGH";
+	char * lvr = "CBEDFAGH";
+	char * lrv = "CEFDBHGA";
+	int n = strlen(lvr);
 	BinTreeNode * p = NULL;
 	BinTree bt,bt1;
 	BinTree_Init(&bt);
@@ -74,11 +80,10 @@ int main()
 			printf("该二叉树的深度为:>%d\n",count);
 			break;
 		case 8:
-			/*printf("请输入你要查找的结点值:>");
-			scanf("&c",&input);
-			fflush(stdin);*/
-			p = BinTree_Find(&bt,'V');
-			/*printf("%p\n",p);*/
+			printf("请输入你要查找的结点值:>");
+			scanf("%c",&input);
+			fflush(stdin);
+			p = BinTree_Find(&bt, input);
 			if(p == NULL)
 			{
 				printf("查找的值不存在!\n");
@@ -114,6 +119,12 @@ int main()
 			break;
 		case 12:
 			BinTree_Create_By_Str(&bt,str,&i);
+			break;
+		case 13:
+			BinTree_Create_By_VLR_LVR(&bt,vlr,lvr,n);
+			break;
+		case 14:
+			BinTree_Create_By_LVR_LRV(&bt,lvr,lrv,n);
 			break;
 		default:
 			printf("选择错误,请重新选择!\n");

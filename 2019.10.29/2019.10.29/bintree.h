@@ -4,6 +4,7 @@
 #include<stdio.h>
 #include<assert.h>
 #include<stdlib.h>
+#include<string.h>
 
 #define DataType char
 
@@ -46,5 +47,11 @@ void BinTree_Create_By_Str(struct BinTree * pbt,DataType * str,int * i);
 BinTreeNode * _BinTree_Create_By_Str(DataType * str,int * i);
 void BinTree_LevelOrder(struct BinTree * pbt);
 void _BinTree_LevelOrder(struct BinTreeNode * pbt);
+//根据前序和中序创建树
+void BinTree_Create_By_VLR_LVR(struct BinTree * pbt,char * vlr,char * lvr,int n);
+BinTreeNode * _BinTree_Create_By_VLR_LVR(char * vlr,char * lvr,int n);
+//根据中序和后序创建树
+void BinTree_Create_By_LVR_LRV(BinTree * pbt,char * lvr,char * lrv,int n);
+BinTreeNode * _BinTree_Create_By_LVR_LRV(char * lvr,char * lrv,int n);
 
 #endif/*_BINTREE_H_*/

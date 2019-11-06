@@ -90,10 +90,10 @@ void _BinTree_LevelOrder(struct BinTreeNode * pbt)
 			BinTreeNode * p = ListQueue_Front_Val(&lq);
 			ListQueue_Del(&lq);
 			printf("%c ",p->data);
-			if(pbt->leftchild != NULL)
-				ListQueue_En(&lq,pbt->leftchild);
-			if(pbt->rightchild != NULL)
-				ListQueue_En(&lq,pbt->rightchild);
+			if(p->leftchild != NULL)
+				ListQueue_En(&lq,p->leftchild);
+			if(p->rightchild != NULL)
+				ListQueue_En(&lq,p->rightchild);
 		}
 	}
 }
@@ -230,4 +230,42 @@ BinTreeNode * _BinTree_Create_By_Str(DataType * str,int * i)
 		p->rightchild = _BinTree_Create_By_Str(str,i);
 	}
     return p;
+}
+
+void BinTree_Create_By_VLR_LVR(struct BinTree * pbt,char * vlr,char * lvr,int n)
+{
+	pbt->root = _BinTree_Create_By_VLR_LVR(vlr,lvr,n);
+}
+BinTreeNode * _BinTree_Create_By_VLR_LVR(char * vlr,char * lvr,int n)
+{
+	int i = 0;
+	BinTreeNode * pbt =  NULL;
+	if(n == 0)
+		return NULL;
+	while(lvr[i] != vlr[0])
+		i++;
+	pbt = (BinTreeNode*)malloc(sizeof(BinTreeNode));
+	pbt->data = lvr[i];
+	pbt->leftchild = _BinTree_Create_By_VLR_LVR(vlr+1,lvr,i);
+	pbt->rightchild = _BinTree_Create_By_VLR_LVR(vlr+i+1,lvr+i+1,n-i-1);
+	return pbt;
+}
+
+void BinTree_Create_By_LVR_LRV(BinTree * pbt,char * lvr,char * lrv,int n)
+{
+	pbt->root = _BinTree_Create_By_LVR_LRV(lvr,lrv,n);
+}
+BinTreeNode * _BinTree_Create_By_LVR_LRV(char * lvr,char * lrv,int n)
+{
+	int i = 0;
+	BinTreeNode * pbt = NULL;
+	if(n == 0)
+		return NULL;
+	while(lvr[i] != lrv[n-1])
+		i++;
+	pbt = (BinTreeNode*)malloc(sizeof(BinTreeNode));
+	pbt->data = lvr[i];
+	pbt->rightchild = _BinTree_Create_By_LVR_LRV(lvr+i+1,lrv+i,n-i-1);
+	pbt->leftchild = _BinTree_Create_By_LVR_LRV(lvr,lrv,i);
+	return pbt;
 }
