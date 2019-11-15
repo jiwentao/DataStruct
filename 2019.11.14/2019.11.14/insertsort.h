@@ -15,6 +15,9 @@ void Straight_Insert_Sort3(int * arr,int left,int right);
 void Binary_Insert_Sort(int * arr,int left,int right);
 //¶şÂ·²åÈëÅÅĞò
 void TwoWay_Insert_Sort(int * arr,int left,int right);
+//Ï£¶ûÅÅĞò
+void Shell_Insert_Sort1(int * arr,int left,int right);
+void Shell_Insert_Sort2(int * arr,int left,int right);
 
 void TestSortEfficiency();
 

@@ -156,6 +156,66 @@ void TwoWay_Insert_Sort(int * arr,int left,int right)
 	tem = NULL;
 }
 
+/*
+   希尔排序(缩小增量排序):先取一个小于n的整数d1作为第一个增量，把文件的全部记录分组。
+                          所有距离为d1的倍数的记录放在同一个组中。先在各组内进行直接
+						  插入排序；然后取第二个增量d2<d1重复上述的分组和排序，直至所
+						  取的增量dt=1(dt<dt-1...<d2<d1),即所有记录放在同一组中进行直接
+						  插入排序为止。                         
+*/
+void _Shell_Insert_Sort1(int * arr,int left,int right,int gap)
+{
+	int i = 0;
+	for(i = left; i <= right-gap; i++)
+	{
+		if(arr[i+gap] < arr[i])
+		{
+			int end = i;
+			int tem = arr[end+gap];
+			while(tem < arr[end])
+			{
+				arr[end+gap] = arr[end];
+				end -= gap;
+			}
+			arr[end+gap] = tem;
+		}
+	}
+}
+int dlta[] = {5,3,2,1};
+void Shell_Insert_Sort1(int * arr,int left,int right)
+{
+	int n = sizeof(dlta)/sizeof(dlta[0]);
+	int i = 0;
+	for(i = 0; i < n; i++)
+	{
+		_Shell_Insert_Sort1(arr,left,right,dlta[i]);
+	}
+}
+
+void Shell_Insert_Sort2(int * arr,int left,int right)
+{
+	int gap = right - left + 1;
+	int i = 0,end = 0,tem = 0;
+	while(gap > 1)
+	{
+		gap = gap/3 +1;
+		for(i = left; i <= right-gap; i++)
+		{
+			if(arr[i+gap] < arr[i])
+			{
+				end = i;
+				tem = arr[end+gap];
+				while(end >= left && tem < arr[end])
+				{
+					arr[end+gap] = arr[end];
+					end -= gap; 
+				}
+				arr[end+gap] = tem;
+			}
+		}
+	}
+}
+
 void TestSort(int * arr,int left,int right)
 {
 	printf("直接插入排序方法一:>");
@@ -177,17 +237,27 @@ void TestSort(int * arr,int left,int right)
 	printf("二路插入排序方法:>");
 	TwoWay_Insert_Sort(arr,left,right);
 	PrintArray(arr,left,right);
+
+	printf("希尔插入排序方法一:>");
+	Shell_Insert_Sort1(arr,left,right);
+	PrintArray(arr,left,right);
+
+	printf("希尔插入排序方法二:>");
+	Shell_Insert_Sort2(arr,left,right);
+	PrintArray(arr,left,right);
 }
 
 void TestSortEfficiency()
 {
-	int n = 20000,i = 0;
+	int n = 40000,i = 0;
 	time_t start = 0,end = 0;
 	int *a = (int*)malloc(sizeof(int)*n);
 	int *a1 = (int*)malloc(sizeof(int)*n);
 	int *a2 = (int*)malloc(sizeof(int)*n);
 	int *a3 = (int*)malloc(sizeof(int)*n);
 	int *a4 = (int*)malloc(sizeof(int)*n);
+	int *a5 = (int*)malloc(sizeof(int)*n);
+	int *a6 = (int*)malloc(sizeof(int)*n);
 	srand(time(0));
 	for(i = 0; i < n; i++)
 	{
@@ -196,6 +266,8 @@ void TestSortEfficiency()
 		a2[i] = a[i];
 		a3[i] = a[i];
 		a4[i] = a[i];
+		a5[i] = a[i];
+		a6[i] = a[i];
 	}
 
 	start = clock();
@@ -222,4 +294,14 @@ void TestSortEfficiency()
 	TwoWay_Insert_Sort(a4,0,n-1);
 	end = clock();
 	printf("TwoWay_Insert_Sort:>%u\n",end-start);
+
+	start = clock();
+	Shell_Insert_Sort1(a5,0,n-1);
+	end = clock();
+	printf("Shell_Insert_Sort1:>%u\n",end-start);
+
+	start = clock();
+	Shell_Insert_Sort2(a6,0,n-1);
+	end = clock();
+	printf("Shell_Insert_Sort2:>%u\n",end-start);
 }
