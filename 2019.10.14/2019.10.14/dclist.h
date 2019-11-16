@@ -54,4 +54,5 @@ void Sort_list(struct DCList * plist);
 void Reverse_list(struct DCList * plist);
 void Clear_list(struct DCList * plist);
 void Destroy_list(struct DCList * plist);
+
 #endif/*_DCLIST_H_*/
